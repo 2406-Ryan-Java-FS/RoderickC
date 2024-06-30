@@ -27,4 +27,8 @@ public class EntryService {
         return entryDAO.getEntry(id);
     }
 
+    public Entry updateEntry(Entry entry, int id) {
+        return entryDAO.updateEntry(entry, id);
+    }
+
 }

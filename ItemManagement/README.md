@@ -1,6 +1,6 @@
 User Stories
 
-  - As a user, I can create a new Item
+  - ~~As a user, I can create a new Item~~
     - ~~As a user, I can view all Items~~
     - ~~As a user, I can view a singular Item by its ID (HINT: Use Path Params to select a Item by its ID)~~
     - As a user, I can update a Item (Change the name or other properties)

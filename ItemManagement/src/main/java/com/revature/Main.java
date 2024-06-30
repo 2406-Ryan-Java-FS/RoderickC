@@ -28,6 +28,7 @@ public class Main {
         app.get("/test", (context -> context.result("Hello!!!")));
         app.get("/paints", controller.getAllEntry);
         app.get("paints/{id}", controller.getEntryById);
+        app.put("paints/{id}", controller.updateEntry);
 
     }
 }

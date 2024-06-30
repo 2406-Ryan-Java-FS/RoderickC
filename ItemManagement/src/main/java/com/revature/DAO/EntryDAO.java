@@ -9,10 +9,10 @@ public interface EntryDAO {
     public Entry addEntry(Entry entry);
 
     public List<Entry> getAllEntry();
-//
+
     public Entry getEntry(int entry_id);
-//
-//    public Entry updateEntry(Entry entry, int entry_id);
+
+    public Entry updateEntry(Entry entry, int entry_id);
 //
 //    public Entry deleteEntry(int entry_id);
 //

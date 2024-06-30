@@ -47,4 +47,20 @@ public class Controller {
 
     };
 
+    public Handler updateEntry = (context) -> {
+
+        ObjectMapper mapper = new ObjectMapper();
+        Entry entry = gson.fromJson(context.body(), Entry.class);
+        int id = Integer.parseInt(context.pathParam("id"));
+//        Entry updatedEntry = entryService.updateEntry(entry, id);
+        if (entry != null) {
+            context.status(201);
+            System.out.println(context.body());
+            context.json(entry);
+            entry = entryService.updateEntry(entry, id);
+        } else {
+            context.status(400);
+        }
+    };
+
 }
