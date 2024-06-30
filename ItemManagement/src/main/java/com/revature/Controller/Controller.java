@@ -63,4 +63,13 @@ public class Controller {
         }
     };
 
+    public Handler deleteEntry = (context) -> {
+
+        int id = Integer.parseInt(context.pathParam("id"));
+        Entry entry = entryService.deleteEntry(id);
+        context.result(gson.toJson(entry));
+        System.out.println("deleted #" + id);
+
+    };
+
 }

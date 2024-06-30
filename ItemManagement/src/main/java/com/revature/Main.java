@@ -29,6 +29,7 @@ public class Main {
         app.get("/paints", controller.getAllEntry);
         app.get("paints/{id}", controller.getEntryById);
         app.put("paints/{id}", controller.updateEntry);
+        app.delete("paints/{id}", controller.deleteEntry);
 
     }
 }

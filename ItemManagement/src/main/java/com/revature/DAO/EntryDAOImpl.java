@@ -3,6 +3,7 @@ package com.revature.DAO;
 import com.revature.Model.Entry;
 import com.revature.Util.ConnectionUtil;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,6 +106,24 @@ public class EntryDAOImpl implements EntryDAO {
         }
         return null;
 
+    }
+
+    public Entry deleteEntry(int id) {
+        String sql = "DELETE FROM paint WHERE _id=? RETURNING *";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return buildPaint(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
         //Helper Method

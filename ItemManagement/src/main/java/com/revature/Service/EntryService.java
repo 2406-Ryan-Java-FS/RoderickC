@@ -31,4 +31,8 @@ public class EntryService {
         return entryDAO.updateEntry(entry, id);
     }
 
+    public Entry deleteEntry(int id) {
+        return entryDAO.deleteEntry(id);
+    }
+
 }
