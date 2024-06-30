@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EntryDAO {
 
-//    public Entry addEntry(Entry entry);
+    public Entry addEntry(Entry entry);
 
     public List<Entry> getAllEntry();
 //

@@ -15,32 +15,31 @@ public class EntryDAOImpl implements EntryDAO {
 
     public static Connection connection = ConnectionUtil.getConnection();
 
-//    // create new entry
-//    @Override
-//    public Entry addEntry(Entry entry) {
-//
-//        String sql = "INSERT INTO Entry (brand, paint_name, price, size) VALUES (?, ?, ?, ?)";
-//
-//        try {
-//            PreparedStatement ps = connection.prepareStatement(sql);
-//
-////            ps.setInt(1, entry.getPosted_by());
-//            ps.setString(1, entry.getBrand());
-//            ps.setString(2, entry.getPaint_name());
-//            ps.setDouble(3, entry.getPrice());
-//            ps.setString(4, entry.getSize());
-//
-//            ResultSet rs = ps.executeQuery();
-//
-//            if (rs.next()) {
-//                return buildPaint(rs);
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//            return null;
-//    }
+    // create new entry
+    @Override
+    public Entry addEntry(Entry entry) {
+
+        String sql = "INSERT INTO paint (brand, paint_name, price, size) VALUES (?, ?, ?, ?)";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setString(1, entry.getBrand());
+            ps.setString(2, entry.getPaint_name());
+            ps.setDouble(3, entry.getPrice());
+            ps.setString(4, entry.getSize());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return buildPaint(rs);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+            return null;
+    }
 
     @Override
     public List<Entry> getAllEntry() {

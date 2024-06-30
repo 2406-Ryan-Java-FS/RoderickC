@@ -16,7 +16,6 @@ public class Main {
 
 //        Javalin app = controller.startAPI();
         app.start(8080);
-        System.out.println("TEST 123");
     }
 
     private static void establishRoutes(Javalin app) {
@@ -25,7 +24,7 @@ public class Main {
         EntryService es = new EntryService(ed);
         Controller controller = new Controller(es);
 
-//        app.post("/paints", controller.addEntry);
+        app.post("/paints", controller.addEntry);
         app.get("/test", (context -> context.result("Hello!!!")));
         app.get("/paints", controller.getAllEntry);
         app.get("paints/{id}", controller.getEntryById);

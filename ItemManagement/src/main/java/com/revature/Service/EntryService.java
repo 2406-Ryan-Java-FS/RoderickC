@@ -15,9 +15,9 @@ public class EntryService {
     }
 
 
-//    public Entry addEntry(Entry entry) {
-//        return entryDAO.addEntry(entry);
-//    }
+    public Entry addEntry(Entry entry) {
+        return entryDAO.addEntry(entry);
+    }
 
     public List<Entry> getAllEntry() {
         return entryDAO.getAllEntry();
