@@ -2,11 +2,13 @@ package com.revature.DAO;
 
 import com.revature.Model.Entry;
 
+import java.util.List;
+
 public interface EntryDAO {
 
 //    public Entry addEntry(Entry entry);
-//
-//    public List<Entry> getAllEntry();
+
+    public List<Entry> getAllEntry();
 //
 //    public Entry getEntry(int entry_id);
 //

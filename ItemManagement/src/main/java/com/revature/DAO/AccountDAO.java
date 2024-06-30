@@ -4,7 +4,6 @@ package com.revature.DAO;
 //import Util.ConnectionUtil;
 //import com.revature.Util.ConnectionUtil;
 
-import java.sql.*;
 // import prepared commands
 
 public class AccountDAO {

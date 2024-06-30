@@ -1,63 +1,76 @@
 package com.revature.DAO;
 
-//import Model.com.revature.Account;
 import Util.ConnectionUtil;
 import com.revature.Model.Entry;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 // import prepared commands
 
-public class EntryDAOImpl {
+public class EntryDAOImpl implements EntryDAO {
+
+    public static Connection connection = ConnectionUtil.getConnection();
 
 //    // create new entry
+//    @Override
 //    public Entry addEntry(Entry entry) {
-//        Connection connection = ConnectionUtil.getConnection();
+//
+//        String sql = "INSERT INTO Entry (brand, paint_name, price, size) VALUES (?, ?, ?, ?)";
+//
 //        try {
-//            String sql = "INSET INTO Entry (posted_by, brand, paint_name, price, time_posted_epoch";
-//            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            PreparedStatement ps = connection.prepareStatement(sql);
 //
-//            preparedStatement.setInt(1, entry.getPosted_by());
-//            preparedStatement.setString(2, entry.getBrand());
-//            preparedStatement.setString(3, entry.getPaint_name());
-//            preparedStatement.setDouble(4, entry.getPrice());
+////            ps.setInt(1, entry.getPosted_by());
+//            ps.setString(1, entry.getBrand());
+//            ps.setString(2, entry.getPaint_name());
+//            ps.setDouble(3, entry.getPrice());
+//            ps.setString(4, entry.getSize());
 //
-//            int rowsAffected = preparedStatement.executeUpdate();
+//            ResultSet rs = ps.executeQuery();
 //
-//            if (rowsAffected == 1) {
-//                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-//                if (generatedKeys.next()) {
-//                    int entry_id = generatedKeys.getInt(1);
-//                    entry.setEntry_id(entry_id);
-//                    return entry;
-//                }
+//            if (rs.next()) {
+//                return buildPaint(rs);
 //            }
+//
 //        } catch (SQLException e) {
 //            System.out.println(e.getMessage());
 //        }
-//        return null;
-//    }
-//
-//    // view all entries
-//
-//    // view item by ID
-//
-//    // update item
-//
-//    // delete item
-//
-//    // view items by account_id ??? here or account dao
-//
-//    //Helper Method
-//    private Entry buildEntry(ResultSet rs) throws SQLException {
-//        Entry e = new Entry();
-////        m.setEntryId(rs.getInt("entryId"));
-////        m.setTitle(rs.getString("title"));
-////        m.setGenreId(rs.getInt("genre_id"));
-////        m.setPrice(rs.getDouble("price"));
-////        m.setAvailable(rs.getBoolean("available"));
-////        m.setReturnDate(rs.getLong("return_date"));
-//
-//        return e;
+//            return null;
 //    }
 
+    public List<Entry> getAllEntry() {
+        String sql = "SELECT * FROM paint";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            List<Entry> entries = new ArrayList<>();
+
+            while (rs.next()) {
+                entries.add(buildPaint(rs));
+            }
+            return entries;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+        //Helper Method
+        private Entry buildPaint (ResultSet rs) throws SQLException {
+            Entry entry = new Entry();
+//            entry.setEntry_id(rs.getInt("entry_id"));
+            entry.setBrand(rs.getString("brand"));
+            entry.setPaint_name(rs.getString("paint_name"));
+            entry.setPrice(rs.getDouble("price"));
+            entry.setSize(rs.getString("size"));
+
+            return entry;
+        }
 }
