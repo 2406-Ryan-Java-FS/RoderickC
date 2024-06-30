@@ -1,4 +1,4 @@
-package Util;
+package com.revature.Util;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -39,14 +39,14 @@ public class ConnectionUtil {
     }
 
     //This is for testing purposes only. Not needed to actually use JDBC.
-    public static void main(String[] args) {
-
-        Connection conn1 = getConnection();
-        Connection conn2 = getConnection();
-
-        System.out.println(conn1);
-        System.out.println(conn2);
-
-    }
+//    public static void main(String[] args) {
+//
+//        Connection conn1 = getConnection();
+//        Connection conn2 = getConnection();
+//
+//        System.out.println(conn1);
+//        System.out.println(conn2);
+//
+//    }
 
 }

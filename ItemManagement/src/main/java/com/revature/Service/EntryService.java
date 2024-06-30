@@ -23,4 +23,8 @@ public class EntryService {
         return entryDAO.getAllEntry();
     }
 
+    public Entry getEntry(int id) {
+        return entryDAO.getEntry(id);
+    }
+
 }

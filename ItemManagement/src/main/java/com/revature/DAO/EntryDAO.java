@@ -10,7 +10,7 @@ public interface EntryDAO {
 
     public List<Entry> getAllEntry();
 //
-//    public Entry getEntry(int entry_id);
+    public Entry getEntry(int entry_id);
 //
 //    public Entry updateEntry(Entry entry, int entry_id);
 //

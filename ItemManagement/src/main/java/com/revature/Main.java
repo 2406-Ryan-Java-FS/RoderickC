@@ -28,6 +28,7 @@ public class Main {
 //        app.post("/paints", controller.addEntry);
         app.get("/test", (context -> context.result("Hello!!!")));
         app.get("/paints", controller.getAllEntry);
+        app.get("paints/{id}", controller.getEntryById);
 
     }
 }

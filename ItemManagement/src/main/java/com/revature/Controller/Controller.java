@@ -36,4 +36,12 @@ public class Controller {
         context.result(entriesJSON);
     };
 
+    public Handler getEntryById = (context) -> {
+
+        int id = Integer.parseInt(context.pathParam("id"));
+        Entry entry = entryService.getEntry(id);
+        context.result(gson.toJson(entry));
+
+    };
+
 }

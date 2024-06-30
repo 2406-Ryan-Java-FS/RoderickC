@@ -1,7 +1,7 @@
 package com.revature.DAO;
 
-import Util.ConnectionUtil;
 import com.revature.Model.Entry;
+import com.revature.Util.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,6 +42,7 @@ public class EntryDAOImpl implements EntryDAO {
 //            return null;
 //    }
 
+    @Override
     public List<Entry> getAllEntry() {
         String sql = "SELECT * FROM paint";
 
@@ -59,6 +60,26 @@ public class EntryDAOImpl implements EntryDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public Entry getEntry(int id) {
+        String sql = "SELECT * FROM paint WHERE _id = ?";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return buildPaint(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
