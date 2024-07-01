@@ -1,8 +1,12 @@
 package com.revature;
 
+import com.revature.Controller.AccountController;
 import com.revature.Controller.Controller;
+import com.revature.DAO.AccountDAO;
+import com.revature.DAO.AccountDAOImpl;
 import com.revature.DAO.EntryDAO;
 import com.revature.DAO.EntryDAOImpl;
+import com.revature.Service.AccountService;
 import com.revature.Service.EntryService;
 import io.javalin.Javalin;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -24,12 +28,18 @@ public class Main {
         EntryService es = new EntryService(ed);
         Controller controller = new Controller(es);
 
+        AccountDAO ad = new AccountDAOImpl();
+        AccountService as = new AccountService(ad);
+        AccountController accountController = new AccountController(as);
+
         app.post("/paints", controller.addEntry);
         app.get("/test", (context -> context.result("Hello!!!")));
         app.get("/paints", controller.getAllEntry);
         app.get("paints/{id}", controller.getEntryById);
         app.put("paints/{id}", controller.updateEntry);
         app.delete("paints/{id}", controller.deleteEntry);
+
+        app.post("/account", accountController.addUser);
 
     }
 }
