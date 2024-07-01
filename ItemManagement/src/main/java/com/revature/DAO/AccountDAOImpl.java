@@ -23,7 +23,7 @@ public class AccountDAOImpl implements AccountDAO{
     //create account
     @Override
     public Account addUser(Account account) {
-            String sql = "INSERT INTO Account (username, password) VALUES (?, ?)";
+            String sql = "INSERT INTO Account (username, password) VALUES (?, ?) RETURNING *";
 
         try {
 
@@ -64,8 +64,10 @@ public class AccountDAOImpl implements AccountDAO{
     // Helper method
     private Account buildAccount (ResultSet rs) throws SQLException {
         Account account = new Account();
+        account.setAccount_id(rs.getInt("a_id"));
         account.setUsername(rs.getString("username"));
         account.setPassword(rs.getString("password"));
+        account.setRole(rs.getString("role"));
 
         return account;
     }

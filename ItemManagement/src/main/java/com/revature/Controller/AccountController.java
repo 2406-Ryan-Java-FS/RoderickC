@@ -22,6 +22,7 @@ public class AccountController {
         } else {
             context.status(201);
             account = accountService.addUser(account);
+            context.json(account);
         }
 
     };

@@ -7,14 +7,17 @@ public class Account {
     private int account_id;
     private String username;
     private String password;
+    private String role;
 
     public Account() {
     }
 
     // set account
     public Account(String username, String password) {
+        this.account_id = account_id;
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
 //    // get account
@@ -48,17 +51,33 @@ public class Account {
         this.password = password;
     }
 
+    public int getAccount_id() {
+        return account_id;
+    }
+
+    public void setAccount_id(int account_id) {
+        this.account_id = account_id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return account_id == account.account_id && Objects.equals(username, account.username) && Objects.equals(password, account.password);
+        return account_id == account.account_id && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(role, account.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(account_id, username, password);
+        return Objects.hash(account_id, username, password, role);
     }
 
     @Override
@@ -67,6 +86,7 @@ public class Account {
                 "account_id=" + account_id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

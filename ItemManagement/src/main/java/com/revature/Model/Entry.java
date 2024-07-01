@@ -16,6 +16,7 @@ public class Entry {
     }
 
     public Entry(String brand, String paint_name, double price, String size) {
+//        this.paint_id = paint_id;
         this.brand = brand;
         this.paint_name = paint_name;
         this.price = price;
@@ -23,6 +24,7 @@ public class Entry {
     }
 
     public Entry(int paint_id, String brand, String paint_name, double price, String size) {
+        this.posted_by = posted_by;
         this.paint_id = paint_id;
         this.brand = brand;
         this.paint_name = paint_name;
