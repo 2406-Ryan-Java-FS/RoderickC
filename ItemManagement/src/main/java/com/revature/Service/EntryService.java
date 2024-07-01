@@ -27,6 +27,10 @@ public class EntryService {
         return entryDAO.getEntry(id);
     }
 
+    public List<Entry> getEntryByAccount(int posted_by) {
+        return entryDAO.getEntryByAccount(posted_by);
+    }
+
     public Entry updateEntry(Entry entry, int id) {
         return entryDAO.updateEntry(entry, id);
     }

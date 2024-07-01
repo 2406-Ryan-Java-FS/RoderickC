@@ -47,6 +47,14 @@ public class Controller {
 
     };
 
+    public Handler getEntryByAccount = (context) -> {
+
+        int id = Integer.parseInt(context.pathParam("a_id"));
+        List<Entry> entries = entryService.getEntryByAccount(id);
+        context.result(gson.toJson(entries));
+
+    };
+
     public Handler updateEntry = (context) -> {
 
         ObjectMapper mapper = new ObjectMapper();

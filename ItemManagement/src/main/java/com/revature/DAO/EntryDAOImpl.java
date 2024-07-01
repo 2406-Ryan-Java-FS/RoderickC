@@ -85,6 +85,29 @@ public class EntryDAOImpl implements EntryDAO {
     }
 
     @Override
+    public List<Entry> getEntryByAccount(int posted_by) {
+        String sql = "SELECT * FROM paint WHERE a_id = ?";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, posted_by);
+
+            ResultSet rs = ps.executeQuery();
+
+            List<Entry> entries = new ArrayList<>();
+
+            while (rs.next()) {
+                entries.add(buildPaint(rs));
+            }
+            return entries;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    @Override
     public Entry updateEntry(Entry entry, int id) {
         String sql = "UPDATE paint SET brand = ?, paint_name = ?, price = ?, size = ? WHERE _id = ? RETURNING *";
 

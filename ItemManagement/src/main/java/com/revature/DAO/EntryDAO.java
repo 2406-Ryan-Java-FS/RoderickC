@@ -15,8 +15,8 @@ public interface EntryDAO {
     public Entry updateEntry(Entry entry, int entry_id);
 
     public Entry deleteEntry(int entry_id);
-//
-//    public Entry accountEntry(int entry_id, int account_id);
+
+    public List<Entry> getEntryByAccount(int posted_by);
 
 
 }

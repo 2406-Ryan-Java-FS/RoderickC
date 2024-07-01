@@ -41,6 +41,7 @@ public class Main {
 
         app.post("/account", accountController.addUser);
         app.post("/login", accountController.loginValidate);
+        app.get("/account/{a_id}", controller.getEntryByAccount);
 
     }
 }
