@@ -81,10 +81,10 @@ public class Controller {
         Entry entryExists = entryService.getEntry(id);
 
         if (entryExists != null) {
-            context.status(201);
+            entry = entryService.updateEntry(entry, id);
             System.out.println(context.body());
             context.json(entry);
-            entry = entryService.updateEntry(entry, id);
+            context.status(201);
 
         } else {
             context.status(404);
