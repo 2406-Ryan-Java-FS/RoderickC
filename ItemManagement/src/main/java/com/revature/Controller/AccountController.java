@@ -17,8 +17,14 @@ public class AccountController {
 
     public Handler addUser = (context) -> {
         Account account = gson.fromJson(context.body(), Account.class);
-        if (account == null) {
+
+        String username = account.getUsername();
+
+        Account accountExists = accountService.getUser(username);
+
+        if (accountExists != null) {
             context.status(400);
+            context.result("Username already exists");
         } else {
             context.status(201);
             account = accountService.addUser(account);
@@ -37,7 +43,7 @@ public class AccountController {
           context.json(validateAccount);
       } else {
           context.status(400);
-          System.out.println("Wrong username or password");
+          context.result("Wrong username or password");
       }
 
     };

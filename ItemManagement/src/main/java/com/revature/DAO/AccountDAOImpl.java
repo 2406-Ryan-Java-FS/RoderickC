@@ -61,6 +61,25 @@ public class AccountDAOImpl implements AccountDAO{
         return null;
     }
 
+    public Account getUser(String username) {
+        String sql = "SELECT * FROM account WHERE username = ?";
+
+        try {
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Account(username, rs.getString("username"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     // Helper method
     private Account buildAccount (ResultSet rs) throws SQLException {
         Account account = new Account();

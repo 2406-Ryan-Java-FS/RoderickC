@@ -43,7 +43,15 @@ public class Controller {
 
         int id = Integer.parseInt(context.pathParam("id"));
         Entry entry = entryService.getEntry(id);
-        context.result(gson.toJson(entry));
+
+        if (entry != null) {
+            context.status(200);
+            context.result(gson.toJson(entry));
+        } else {
+            context.status(404);
+            context.result("Item doesn't exist");
+        }
+
 
     };
 
@@ -51,7 +59,15 @@ public class Controller {
 
         int id = Integer.parseInt(context.pathParam("a_id"));
         List<Entry> entries = entryService.getEntryByAccount(id);
-        context.result(gson.toJson(entries));
+
+        if (entries.size() > 0) {
+            context.status(200);
+            context.result(gson.toJson(entries));
+        } else {
+            context.status(404);
+            context.result("Account doesn't have any items");
+        }
+
 
     };
 
@@ -61,13 +77,18 @@ public class Controller {
         Entry entry = gson.fromJson(context.body(), Entry.class);
         int id = Integer.parseInt(context.pathParam("id"));
 //        Entry updatedEntry = entryService.updateEntry(entry, id);
-        if (entry != null) {
+
+        Entry entryExists = entryService.getEntry(id);
+
+        if (entryExists != null) {
             context.status(201);
             System.out.println(context.body());
             context.json(entry);
             entry = entryService.updateEntry(entry, id);
+
         } else {
-            context.status(400);
+            context.status(404);
+            context.result("Item doesn't exist");
         }
     };
 
@@ -75,8 +96,16 @@ public class Controller {
 
         int id = Integer.parseInt(context.pathParam("id"));
         Entry entry = entryService.deleteEntry(id);
-        context.result(gson.toJson(entry));
-        System.out.println("deleted #" + id);
+
+        if (entry != null) {
+            context.status(200);
+            context.result(gson.toJson(entry));
+            System.out.println("deleted #" + id);
+        } else {
+            context.status(404);
+            context.result("Item doesn't exist");
+        }
+
 
     };
 

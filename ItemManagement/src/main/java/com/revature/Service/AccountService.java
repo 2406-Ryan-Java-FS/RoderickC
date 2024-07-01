@@ -27,6 +27,10 @@ public class AccountService {
         }
     }
 
+    public Account getUser(String username) {
+        return accountDAO.getUser(username);
+    }
+
 //
 //    public Account loginValidate(Account account) {
 //        if (accountDAO.loginValidate(account) != null) {

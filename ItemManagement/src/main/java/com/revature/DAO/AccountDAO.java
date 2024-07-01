@@ -8,4 +8,6 @@ public interface AccountDAO {
 
     public Account loginValidate(Account account);
 
+    public Account getUser(String username);
+
 }
