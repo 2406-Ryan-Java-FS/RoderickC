@@ -25,4 +25,20 @@ public class AccountController {
         }
 
     };
+
+    public Handler loginValidate = (context) -> {
+      Account account = gson.fromJson(context.body(), Account.class);
+
+      Account validateAccount = accountService.loginValidate(account);
+      if (validateAccount != null) {
+          context.status(200);
+          System.out.println("Logged in as " + validateAccount.getUsername());
+          context.json(validateAccount);
+      } else {
+          context.status(400);
+          System.out.println("Wrong username or password");
+      }
+
+    };
+
 }

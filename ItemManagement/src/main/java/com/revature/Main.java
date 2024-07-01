@@ -40,6 +40,7 @@ public class Main {
         app.delete("paints/{id}", controller.deleteEntry);
 
         app.post("/account", accountController.addUser);
+        app.post("/login", accountController.loginValidate);
 
     }
 }

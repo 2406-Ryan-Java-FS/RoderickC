@@ -12,20 +12,20 @@ public class AccountService {
     }
 
     public Account addUser(Account account) {
-//        if((account.getUsername().length == 0) || (accountDAO.getAccount(account) != null)) {
+//        if((account.getUsername().length() == 0) || (accountDAO.getAccount(account) != null)) {
 //            return null;
 //        } else {
             return accountDAO.addUser(account);
 //        }
     }
 
-//    public Account loginValidate(Account account) {
-//        if (accountDAO.loginValidate(account) != null) {
-//            return accountDAO.loginValidate(account);
-//        } else {
-//            return null;
-//        }
-//    }
+    public Account loginValidate(Account account) {
+        if (accountDAO.loginValidate(account) != null) {
+            return accountDAO.loginValidate(account);
+        } else {
+            return null;
+        }
+    }
 
 //
 //    public Account loginValidate(Account account) {

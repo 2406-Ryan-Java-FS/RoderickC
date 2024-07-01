@@ -6,6 +6,6 @@ public interface AccountDAO {
 
     public Account addUser(Account account);
 
-//    public Account loginValidate(Account account);
+    public Account loginValidate(Account account);
 
 }
