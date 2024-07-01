@@ -26,8 +26,8 @@ public class Controller {
             return;
         } else {
             System.out.println("Req body: " + context.body());
-            context.status(201).json(entry);
             entry = entryService.addEntry(entry);
+            context.status(201).json(entry);
         }
 
     };

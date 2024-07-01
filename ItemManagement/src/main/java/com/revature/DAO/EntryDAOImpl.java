@@ -20,7 +20,7 @@ public class EntryDAOImpl implements EntryDAO {
     @Override
     public Entry addEntry(Entry entry) {
 
-        String sql = "INSERT INTO paint (a_id, brand, paint_name, price, size) VALUES (?, ?, ?, ?, ?) RETURNING *";
+        String sql = "INSERT INTO paint (_id, a_id, brand, paint_name, price, size) VALUES (DEFAULT, ?, ?, ?, ?, ?) RETURNING *";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -153,8 +153,8 @@ public class EntryDAOImpl implements EntryDAO {
         //Helper Method
         private Entry buildPaint (ResultSet rs) throws SQLException {
             Entry entry = new Entry();
-            entry.setPosted_by(rs.getInt("a_id"));
             entry.setEntry_id(rs.getInt("_id"));
+            entry.setPosted_by(rs.getInt("a_id"));
             entry.setBrand(rs.getString("brand"));
             entry.setPaint_name(rs.getString("paint_name"));
             entry.setPrice(rs.getDouble("price"));
