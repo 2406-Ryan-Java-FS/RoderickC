@@ -84,7 +84,7 @@ public class Controller {
             entry = entryService.updateEntry(entry, id);
             System.out.println(context.body());
             context.json(entry);
-            context.status(201);
+            context.status(200);
 
         } else {
             context.status(404);

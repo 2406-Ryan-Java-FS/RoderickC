@@ -10,7 +10,6 @@ public class Entry {
     private String paint_name;
     private double price;
     private String size;
-    private long time_posted_epoch;
 
     public Entry(){
     }
@@ -80,25 +79,18 @@ public class Entry {
         this.size = size;
     }
 
-    public long getTime_posted_epoch() {
-        return time_posted_epoch;
-    }
-
-    public void setTime_posted_epoch(long time_posted_epoch) {
-        this.time_posted_epoch = time_posted_epoch;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Entry entry = (Entry) o;
-        return paint_id == entry.paint_id && posted_by == entry.posted_by && Double.compare(price, entry.price) == 0 && time_posted_epoch == entry.time_posted_epoch && Objects.equals(brand, entry.brand) && Objects.equals(paint_name, entry.paint_name) && Objects.equals(size, entry.size);
+        return paint_id == entry.paint_id && posted_by == entry.posted_by && Double.compare(price, entry.price) == 0 && Objects.equals(brand, entry.brand) && Objects.equals(paint_name, entry.paint_name) && Objects.equals(size, entry.size);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(paint_id, posted_by, brand, paint_name, price, size, time_posted_epoch);
+        return Objects.hash(paint_id, posted_by, brand, paint_name, price, size);
     }
 
     @Override
@@ -110,7 +102,6 @@ public class Entry {
                 ", paint_name='" + paint_name + '\'' +
                 ", price=" + price +
                 ", size='" + size + '\'' +
-                ", time_posted_epoch=" + time_posted_epoch +
                 '}';
     }
 }
